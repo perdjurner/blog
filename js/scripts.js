@@ -30,9 +30,15 @@ function toHtml(md) {
   let articles = "";
   for (const issue of issues) {
     if (issue.state === "open") {
+      const labels = issue.labels.reduce((acc, cur, index) => {
+        const li = `<li>${cur.name}</li>`;
+        acc += index === 0 ? `<ul>${li}` : li;
+        return index === issue.labels.length - 1 ? `${acc}</ul>` : acc;
+      }, "");
       articles += `
       <article> 
         <h1>${issue.title}</h1>
+        <div>${labels}</div>
         <p>${toHtml(toEntities(issue.body))}</p>
       </article>
     `;
