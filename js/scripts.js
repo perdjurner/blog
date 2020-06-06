@@ -11,14 +11,11 @@ async function api(url) {
   return data;
 }
 
-function isPublic(issue) {
-  return issue.labels.every((elm) => elm.name !== "draft");
-}
-
 function toHtml(md) {
   html = md;
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
+  html = html.replace(/#{3} (.*)[\s\S]/g, "<strong>$1</strong>");
   return html;
 }
 
@@ -27,7 +24,8 @@ function toHtml(md) {
   const issues = await api("repos/perdjurner/blog/issues");
   let articles = "";
   for (const issue of issues) {
-    if (isPublic(issue)) {
+    if (issue.state === "open") {
+      console.log(issue.body);
       articles += `
       <article> 
         <h1>${issue.title}</h1>

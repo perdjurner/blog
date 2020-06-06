@@ -20,15 +20,21 @@ article p {
   font-size: 1.1rem;
   line-height: 1.6rem;
   margin: 0.5rem 0 0 0;
+  white-space: pre-wrap;
+}
+
+article p strong {
+  font-weight: 500;
 }
 
 code {
-  background: hsl(220, 80%, 90%);
+  background: #ddd;
+  padding: 2px 4px;
 }
 
 pre {
   white-space: pre-wrap;
-  background: hsl(30, 80%, 90%);
+  background: green;
 }
 
 footer {
