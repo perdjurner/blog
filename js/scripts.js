@@ -21,6 +21,7 @@ function toHtml(md) {
   html = md;
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
+  html = html.replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>");
   return html;
 }
 
