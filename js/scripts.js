@@ -17,32 +17,29 @@ function toHtml(md) {
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
   return html;
 }
+
 (async () => {
   const user = await api("users/perdjurner");
   const issues = await api("repos/perdjurner/dev/issues");
-  const bio = `
-    <h1>${user.name}</h1>
-    <hr>
-    <p>${user.bio}</p>
-    <hr>
-  `;
   let articles = "";
   for (const issue of issues) {
-    console.log(issue.body);
     articles += `
       <article> 
-        <h2>${issue.title}</h2>
+        <h1>${issue.title}</h1>
         <p>${toHtml(issue.body)}</p>
       </article>
     `;
   }
   const html = `
-    <header>
-      ${bio}
-    </header>
     <main>
       ${articles}
     </main>
+    <footer>
+      <a href="https://twitter.com/perdjurner">
+        <img src="/images/twitter.svg" alt="Twitter logo">
+        <p>${user.name}</p>
+      </a>
+    </footer>
   `;
   document.querySelector("body").innerHTML = html;
 })().catch((e) => {
