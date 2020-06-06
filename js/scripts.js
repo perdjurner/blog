@@ -49,7 +49,7 @@ function toHtml(md) {
       </a>
     </footer>
   `;
-  document.querySelector("body").innerHTML = html;
+  document.querySelector("main").innerHTML = html;
 })().catch((e) => {
   console.error(e);
 });
