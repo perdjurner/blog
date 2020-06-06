@@ -24,6 +24,10 @@ function toHtml(md) {
   return html;
 }
 
+function toDate(str) {
+  return new Intl.DateTimeFormat("en-US").format(Date.parse(str));
+}
+
 (async () => {
   const user = await api("users/perdjurner");
   const issues = await api("repos/perdjurner/blog/issues");
@@ -38,6 +42,7 @@ function toHtml(md) {
       articles += `
       <article> 
         <h1>${issue.title}</h1>
+        <div>${toDate(issue.created_at)}</div>
         <div>${labels}</div>
         <p>${toHtml(toEntities(issue.body))}</p>
       </article>
