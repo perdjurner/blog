@@ -1,0 +1,50 @@
+body {
+  background: #f4f5f7;
+  font-family: system-ui;
+  color: #161e2e;
+}
+
+header {
+  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1440px;
+  justify-content: space-around;
+}
+
+article {
+  width: 400px;
+  padding: 0 20px 10px 20px;
+  background: #fafafa;
+  margin: 20px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+code {
+  background: hsl(220, 80%, 90%);
+}
+
+pre {
+  white-space: pre-wrap;
+  background: hsl(30, 80%, 90%);
+}
