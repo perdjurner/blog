@@ -3,7 +3,8 @@ html {
 }
 
 body {
-  background: linear-gradient(45deg, #eee, #fff);
+  background: linear-gradient(170deg, #fff, #eee);
+  background-attachment: fixed;
   color: #222;
   font-family: system-ui;
   margin: 0 auto;

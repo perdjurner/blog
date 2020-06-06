@@ -11,6 +11,10 @@ async function api(url) {
   return data;
 }
 
+function isPublic(issue) {
+  return issue.labels.every((elm) => elm.name !== "draft");
+}
+
 function toHtml(md) {
   html = md;
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
@@ -20,15 +24,17 @@ function toHtml(md) {
 
 (async () => {
   const user = await api("users/perdjurner");
-  const issues = await api("repos/perdjurner/dev/issues");
+  const issues = await api("repos/perdjurner/blog/issues");
   let articles = "";
   for (const issue of issues) {
-    articles += `
+    if (isPublic(issue)) {
+      articles += `
       <article> 
         <h1>${issue.title}</h1>
         <p>${toHtml(issue.body)}</p>
       </article>
     `;
+    }
   }
   const html = `
     <main>
