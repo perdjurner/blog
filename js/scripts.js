@@ -42,8 +42,7 @@ function toDate(str) {
       articles += `
       <article> 
         <h1>${issue.title}</h1>
-        <div>${toDate(issue.created_at)}</div>
-        <div>${labels}</div>
+        <div class="details">${toDate(issue.created_at)}${labels}</div>
         <p>${toHtml(toEntities(issue.body))}</p>
       </article>
     `;

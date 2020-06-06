@@ -16,6 +16,23 @@ article h1 {
   margin: 3rem 0 0 0;
 }
 
+article .details {
+  display: flex;
+  color: #6b6b6b;
+  font-size: 0.75rem;
+}
+
+article .details ul {
+  margin: 0;
+  padding-left: 10px;
+  list-style: none;
+}
+
+article .details ul li {
+  display: inline;
+  margin-left: 5px;
+}
+
 article p {
   font-size: 1.1rem;
   line-height: 1.6rem;
