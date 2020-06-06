@@ -11,11 +11,16 @@ async function api(url) {
   return data;
 }
 
+function toEntities(md) {
+  const elm = document.createElement("p");
+  elm.textContent = md;
+  return elm.innerHTML;
+}
+
 function toHtml(md) {
   html = md;
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
-  html = html.replace(/#{3} (.*)[\s\S]/g, "<strong>$1</strong>");
   return html;
 }
 
@@ -25,11 +30,10 @@ function toHtml(md) {
   let articles = "";
   for (const issue of issues) {
     if (issue.state === "open") {
-      console.log(issue.body);
       articles += `
       <article> 
         <h1>${issue.title}</h1>
-        <p>${toHtml(issue.body)}</p>
+        <p>${toHtml(toEntities(issue.body))}</p>
       </article>
     `;
     }

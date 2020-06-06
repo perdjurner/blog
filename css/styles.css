@@ -28,13 +28,14 @@ article p strong {
 }
 
 code {
-  background: #ddd;
-  padding: 2px 4px;
+  background: #eee;
+  padding: 0.2rem 0.4rem;
 }
 
 pre {
   white-space: pre-wrap;
-  background: green;
+  background: #eee;
+  padding: 1rem;
 }
 
 footer {
