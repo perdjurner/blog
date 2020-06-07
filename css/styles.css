@@ -56,10 +56,12 @@ pre {
 }
 
 footer {
-  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 1rem;
   display: flex;
   justify-content: flex-end;
-  margin-top: 3rem;
 }
 
 footer a {
