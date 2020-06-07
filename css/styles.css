@@ -11,26 +11,58 @@ body {
   max-width: 768px;
 }
 
-article h1 {
-  font-size: 1.8rem;
-  margin: 3rem 0 0 0;
+article {
+  display: grid;
+  grid-template-columns: 10rem auto;
 }
 
-article .details {
-  display: flex;
-  color: #6b6b6b;
+article .date {
+  align-self: end;
   font-size: 0.75rem;
+  color: #6b6b6b;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
 }
 
-article .details ul {
+article .title {
+  padding: 1rem 0;
+  align-self: end;
+  border-bottom: 1px solid #ddd;
+}
+
+article .title h1 {
+  font-size: 1.8rem;
+  line-height: 2rem;
   margin: 0;
-  padding-left: 10px;
-  list-style: none;
 }
 
-article .details ul li {
-  display: inline;
-  margin-left: 5px;
+article .labels {
+  font-size: 0.75rem;
+  padding: 1rem 1rem 0 0;
+  display: flex;
+}
+
+article .labels ul {
+  margin: 5px 0 0 0;
+  list-style: none;
+  padding-left: 0;
+  color: #6b6b6b;
+}
+
+article .labels li {
+  font-size: 0.6rem;
+  background: #eee;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+article .post {
+  padding: 1rem 0;
 }
 
 article p {

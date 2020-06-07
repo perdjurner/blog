@@ -29,6 +29,10 @@ function toDate(str) {
   return new Intl.DateTimeFormat("en-US").format(Date.parse(str));
 }
 
+function render(html) {
+  document.querySelector("main").innerHTML = html;
+}
+
 (async () => {
   const user = await api("users/perdjurner");
   const issues = await api("repos/perdjurner/blog/issues");
@@ -42,14 +46,23 @@ function toDate(str) {
       }, "");
       articles += `
       <article> 
-        <h1>${issue.title}</h1>
-        <div class="details">${toDate(issue.created_at)}${labels}</div>
-        <p>${toHtml(toEntities(issue.body))}</p>
+        <div class="date">
+          ${toDate(issue.created_at)}
+        </div>
+        <div class="title">  
+          <h1>${issue.title}</h1>
+        </div>
+        <div class="labels">
+          ${labels}
+        </div>
+        <div class="post">
+          ${toHtml(toEntities(issue.body))}
+        </div>
       </article>
     `;
     }
   }
-  const html = `
+  render(`
     <main>
       ${articles}
     </main>
@@ -59,8 +72,7 @@ function toDate(str) {
         <p>${user.name}</p>
       </a>
     </footer>
-  `;
-  document.querySelector("main").innerHTML = html;
+`);
 })().catch((e) => {
   console.error(e);
 });
