@@ -31,7 +31,7 @@ article .date {
   font-size: 0.75rem;
   color: #6b6b6b;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
+  padding-bottom: calc(1rem + 3px);
 }
 
 article .title {
@@ -53,7 +53,7 @@ article .labels {
 }
 
 article .labels ul {
-  margin: 5px 0 0 0;
+  margin: 9px 0 0 0;
   list-style: none;
   padding-left: 0;
   color: #6b6b6b;
@@ -72,10 +72,8 @@ article .labels li {
 }
 
 article .post {
-  padding: 1rem 0;
   font-size: 1.2rem;
   line-height: calc(1.2rem * 1.4);
-  white-space: pre-wrap;
 }
 
 article p strong {

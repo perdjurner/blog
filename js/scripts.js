@@ -22,7 +22,9 @@ function toHtml(md) {
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
   html = html.replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>");
-  return html;
+  html = html.replace(/\r\n\r\n/g, "</p><p>");
+  html = html.replace(/\r\n/g, "<br>");
+  return "<p>" + html + "</p>";
 }
 
 function toDate(str) {
