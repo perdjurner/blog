@@ -35,19 +35,18 @@ function render(html) {
 
 (async () => {
   const user = await api("users/perdjurner");
-  const issues = await api("repos/perdjurner/blog/issues");
+  const issues = await api("repos/perdjurner/blog/issues?state=closed");
   let articles = "";
   for (const issue of issues) {
-    if (issue.state === "open") {
-      const labels = issue.labels.reduce((acc, cur, index) => {
-        const li = `<li>${cur.name}</li>`;
-        acc += index === 0 ? `<ul>${li}` : li;
-        return index === issue.labels.length - 1 ? `${acc}</ul>` : acc;
-      }, "");
-      articles += `
+    const labels = issue.labels.reduce((acc, cur, index) => {
+      const li = `<li>${cur.name}</li>`;
+      acc += index === 0 ? `<ul>${li}` : li;
+      return index === issue.labels.length - 1 ? `${acc}</ul>` : acc;
+    }, "");
+    articles += `
       <article> 
         <div class="date">
-          ${toDate(issue.created_at)}
+          ${toDate(issue.closed_at)}
         </div>
         <div class="title">  
           <h1>${issue.title}</h1>
@@ -60,7 +59,6 @@ function render(html) {
         </div>
       </article>
     `;
-    }
   }
   render(`
     <main>

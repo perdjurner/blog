@@ -20,11 +20,8 @@ body {
   max-width: 768px;
 }
 
-main {
-  margin-top: 2rem;
-}
-
 article {
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: 10rem auto;
 }
