@@ -1,14 +1,17 @@
 async function api(url) {
   const baseUrl = "https://api.github.com";
+  let stale = false;
   let data = localStorage.getItem(url);
   if (data) {
     data = JSON.parse(data);
-  } else {
+    stale = parseInt((Date.now() - data.added) / 1000 / 60) > 10;
+  }
+  if (stale) {
     const result = await fetch(`${baseUrl}/${url}`);
-    data = await result.json();
+    data = { value: await result.json(), added: Date.now() };
     localStorage.setItem(url, JSON.stringify(data));
   }
-  return data;
+  return data.value;
 }
 
 function toEntities(md) {
@@ -19,7 +22,6 @@ function toEntities(md) {
 
 function toHtml(md) {
   html = md;
-
   html = html.replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>");
   html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
   html = html.replace(/`(.*?)`/g, "<code>$1</code>");
