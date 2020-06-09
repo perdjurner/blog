@@ -1,12 +1,14 @@
 async function api(url) {
   const baseUrl = "https://api.github.com";
-  let stale = false;
+  let fetchData;
   let data = localStorage.getItem(url);
   if (data) {
     data = JSON.parse(data);
-    stale = parseInt((Date.now() - data.added) / 1000 / 60) > 10;
+    fetchData = parseInt((Date.now() - data.added) / 1000 / 60) >= 10;
+  } else {
+    fetchData = true;
   }
-  if (stale) {
+  if (fetchData) {
     const result = await fetch(`${baseUrl}/${url}`);
     data = { value: await result.json(), added: Date.now() };
     localStorage.setItem(url, JSON.stringify(data));
