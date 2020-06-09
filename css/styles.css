@@ -27,13 +27,13 @@ article {
 }
 
 article a {
-  color: #2b6cb0;
-  text-decoration: none;
+  color: #174ba2;
+  text-decoration: underline;
 }
 
 article a:hover {
-  color: #2c5282;
-  text-decoration: underline;
+  color: #042470;
+  text-decoration: none;
 }
 
 article .date {
