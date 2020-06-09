@@ -37,7 +37,8 @@ function render(html) {
 
 (async () => {
   const user = await api("users/perdjurner");
-  const issues = await api("repos/perdjurner/blog/issues?state=closed");
+  let issues = await api("repos/perdjurner/blog/issues?state=closed");
+  issues = [...issues].sort((a, b) => (a.closed_at < b.closed_at ? 1 : -1));
   let articles = "";
   for (const issue of issues) {
     const labels = issue.labels.reduce((acc, cur, index) => {
