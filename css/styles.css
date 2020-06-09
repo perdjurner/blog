@@ -26,6 +26,16 @@ article {
   grid-template-columns: 10rem auto;
 }
 
+article a {
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+article a:hover {
+  color: #2c5282;
+  text-decoration: underline;
+}
+
 article .date {
   align-self: end;
   font-size: 0.75rem;
