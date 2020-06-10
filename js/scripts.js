@@ -23,14 +23,14 @@ function toEntities(md) {
 }
 
 function toHtml(md) {
-  html = md;
-  html = html.replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>");
-  html = html.replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>");
-  html = html.replace(/`(.*?)`/g, "<code>$1</code>");
-  html = html.replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\r\n\r\n/g, "</p><p>");
-  html = html.replace(/\r\n/g, "<br>");
-  return "<p>" + html + "</p>";
+  return "<p>" + 
+  md.replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
+   .replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>")
+   .replace(/`(.*?)`/g, "<code>$1</code>")
+   .replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>")
+   .replace(/\r\n\r\n/g, "</p><p>")
+   .replace(/\r\n/g, "<br>")
+  + "</p>";
 }
 
 function toDate(str) {
