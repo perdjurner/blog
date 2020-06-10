@@ -23,14 +23,17 @@ function toEntities(md) {
 }
 
 function toHtml(md) {
-  return "<p>" + 
-  md.replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
-   .replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>")
-   .replace(/`(.*?)`/g, "<code>$1</code>")
-   .replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>")
-   .replace(/\r\n\r\n/g, "</p><p>")
-   .replace(/\r\n/g, "<br>")
-  + "</p>";
+  return (
+    "<p>" +
+    md
+      .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
+      .replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>")
+      .replace(/`(.*?)`/g, "<code>$1</code>")
+      .replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>")
+      .replace(/\r\n\r\n/g, "</p><p>")
+      .replace(/\r\n/g, "<br>") +
+    "</p>"
+  );
 }
 
 function toDate(str) {
@@ -44,7 +47,9 @@ function render(html) {
 (async () => {
   const user = await api("users/perdjurner");
   let issues = await api("repos/perdjurner/blog/issues?state=closed");
-  issues = [...issues].sort((a, b) => (a.closed_at < b.closed_at ? 1 : -1));
+  issues = issues
+    .filter((elm) => elm.author_association === "OWNER")
+    .sort((a, b) => (a.closed_at < b.closed_at ? 1 : -1));
   let articles = "";
   for (const issue of issues) {
     const labels = issue.labels.reduce((acc, cur, index) => {
