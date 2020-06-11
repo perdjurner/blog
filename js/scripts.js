@@ -44,6 +44,19 @@ function toDate(str) {
   }).format(Date.parse(str));
 }
 
+function permalink(str) {
+  return "/#/" + str.replace(/ /g, "-").toLowerCase();
+}
+
+function postLinkHtml(title) {
+  const url = permalink(title);
+  return `
+    <p class="permalink">
+      <a href="${url}" onclick="setTimeout(location.reload.bind(location), 1)">https://perdjurner.com${url}</a> &rarr;
+    </p>
+  `;
+}
+
 function postsHtml(posts) {
   let rv = "";
   if (window.location.hash) {
@@ -63,6 +76,7 @@ function postsHtml(posts) {
         </div>
         <div class="post">
           ${toHtml(toEntities(post.body))}
+          ${window.location.hash ? "" : postLinkHtml(post.title)}
         </div>
       </article>
     `;

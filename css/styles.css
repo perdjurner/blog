@@ -143,3 +143,19 @@ footer img {
 .home a:hover {
   text-decoration: underline;
 }
+
+.permalink {
+  text-align: right;
+  color: #6b6b6b;
+  font-size: 0.75rem;
+}
+
+.permalink a {
+  color: #6b6b6b;
+  text-decoration: none;
+}
+
+.permalink a:hover {
+  color: #6b6b6b;
+  text-decoration: underline;
+}
