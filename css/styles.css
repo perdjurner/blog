@@ -127,3 +127,19 @@ footer img {
   height: 16px;
   width: 16px;
 }
+
+.home {
+  position: absolute;
+  font-size: 0.75rem;
+  color: #6b6b6b;
+  top: 0;
+}
+
+.home a {
+  color: #6b6b6b;
+  text-decoration: none;
+}
+
+.home a:hover {
+  text-decoration: underline;
+}

@@ -46,6 +46,9 @@ function toDate(str) {
 
 function postsHtml(posts) {
   let rv = "";
+  if (window.location.hash) {
+    rv += `<p class="home">&larr; <a href="/">Home</a></p>`;
+  }
   for (const post of posts) {
     rv += `
       <article> 
