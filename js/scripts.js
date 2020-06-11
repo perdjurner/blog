@@ -26,8 +26,8 @@ function toHtml(md) {
   return (
     "<p>" +
     md
+      .replace(/`{3}\r\n([.\s\S]*?)\r\n`{3}/g, "<pre>$1</pre>")
       .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
-      .replace(/`{3}([.\s\S]*?)`{3}/g, "<pre>$1</pre>")
       .replace(/`(.*?)`/g, "<code>$1</code>")
       .replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>")
       .replace(/\r\n\r\n/g, "</p><p>")
