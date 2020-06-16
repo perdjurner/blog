@@ -1,0 +1,21 @@
+/* Expand main area */
+
+body {
+  max-width: 700px;
+}
+
+article {
+  grid-template-columns: 7rem auto;
+}
+
+/* Adjust font */
+
+article .title h1 {
+  font-size: 2.2rem;
+  line-height: calc(2.2rem * 1.1);
+}
+
+article .post {
+  font-size: 1.25rem;
+  line-height: calc(1.25rem * 1.4);
+}

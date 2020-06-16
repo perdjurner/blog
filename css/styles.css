@@ -17,7 +17,7 @@ body {
   background-attachment: fixed;
   color: #222;
   margin: 0 auto;
-  max-width: 768px;
+  max-width: 850px;
 }
 
 article {
@@ -51,8 +51,8 @@ article .title {
 }
 
 article .title h1 {
-  font-size: 2rem;
-  line-height: calc(2rem * 1.1);
+  font-size: 2.4rem;
+  line-height: calc(2.4rem * 1.1);
   margin: 0;
 }
 
@@ -82,8 +82,8 @@ article .labels li {
 }
 
 article .post {
-  font-size: 1.2rem;
-  line-height: calc(1.2rem * 1.4);
+  font-size: 1.3rem;
+  line-height: calc(1.3rem * 1.4);
 }
 
 article p strong {

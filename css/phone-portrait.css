@@ -1,7 +1,4 @@
-article {
-  display: block;
-  padding: 0 1rem;
-}
+/* Adjust font */
 
 article .title h1 {
   font-size: 1.6rem;
@@ -11,13 +8,4 @@ article .title h1 {
 article .post {
   font-size: 1rem;
   line-height: calc(1rem * 1.4);
-}
-
-article .labels {
-  display: none;
-}
-
-article .date {
-  border-bottom: none;
-  padding-bottom: 0;
 }

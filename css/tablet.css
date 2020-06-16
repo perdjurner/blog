@@ -1,0 +1,11 @@
+/* Adjust font */
+
+article .title h1 {
+  font-size: 2rem;
+  line-height: calc(2rem * 1.1);
+}
+
+article .post {
+  font-size: 1.2rem;
+  line-height: calc(1.2rem * 1.4);
+}
