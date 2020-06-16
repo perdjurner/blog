@@ -13,7 +13,12 @@ html {
 }
 
 body {
-  background: linear-gradient(170deg, #fff, #eee);
+  background: linear-gradient(
+      170deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(238, 238, 238, 0.4)
+    ),
+    url("/images/bg.png");
   background-attachment: fixed;
   color: #222;
   margin: 0 auto;
@@ -39,6 +44,7 @@ article a:hover {
 article .date {
   align-self: end;
   font-size: 0.75rem;
+  font-weight: 500;
   color: #6b6b6b;
   border-bottom: 1px solid #ddd;
   padding-bottom: calc(1rem + 3px);
@@ -93,6 +99,7 @@ article p strong {
 code {
   background: #eee;
   padding: 0.2rem 0.4rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 pre {
@@ -102,6 +109,7 @@ pre {
   font-size: 1.1rem;
   line-height: calc(1.1rem * 1.2);
   color: #555;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 footer {
