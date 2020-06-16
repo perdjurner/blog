@@ -162,3 +162,10 @@ footer img {
   color: #6b6b6b;
   text-decoration: underline;
 }
+
+mark {
+  background: none;
+  text-shadow: -6px 0px 12px rgba(255, 193, 7, 0.3),
+    6px 0px 12px rgba(255, 193, 7, 0.3), 12px 0px 24px rgba(255, 193, 7, 0.3),
+    -12px 0px 24px rgba(255, 193, 7, 0.3);
+}
