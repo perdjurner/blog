@@ -99,6 +99,9 @@ pre {
   white-space: pre-wrap;
   background: #eee;
   padding: 1rem;
+  font-size: 1.1rem;
+  line-height: calc(1.1rem * 1.2);
+  color: #555;
 }
 
 footer {
