@@ -56,14 +56,16 @@ function postsHtml(posts) {
   }
   for (const post of posts) {
     const url = permalink(post.title);
-    const title = post.title;
+    const title = window.location.hash
+      ? post.title
+      : `<a href="${url}" onclick="setTimeout(location.reload.bind(location), 1)">${post.title}</a>`;
     rv += `
       <article> 
         <div class="date">
           ${toDate(post.closed_at)}
         </div>
         <div class="title">  
-          <h1><a href="${url}" onclick="setTimeout(location.reload.bind(location), 1)">${title}</a></h1>
+          <h1>${title}</h1>
         </div>
         <div class="labels">
           ${labelsHtml(post.labels)}

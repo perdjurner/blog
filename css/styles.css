@@ -37,6 +37,10 @@ article .title a {
   text-decoration: none;
 }
 
+article .title a:hover {
+  text-decoration: underline;
+}
+
 article .post a {
   color: #174ba2;
   text-decoration: underline;
