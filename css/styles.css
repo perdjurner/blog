@@ -27,16 +27,22 @@ body {
 
 article {
   margin-top: 4rem;
+  margin-bottom: 6rem;
   display: grid;
   grid-template-columns: 10rem auto;
 }
 
-article a {
+article .title a {
+  color: #222;
+  text-decoration: none;
+}
+
+article .post a {
   color: #174ba2;
   text-decoration: underline;
 }
 
-article a:hover {
+article .post a:hover {
   color: #042470;
   text-decoration: none;
 }
@@ -144,6 +150,7 @@ footer img {
 .home {
   position: absolute;
   font-size: 0.75rem;
+  font-weight: 500;
   color: #6b6b6b;
   top: 0;
 }
@@ -154,22 +161,6 @@ footer img {
 }
 
 .home a:hover {
-  text-decoration: underline;
-}
-
-.permalink {
-  text-align: right;
-  color: #6b6b6b;
-  font-size: 0.75rem;
-}
-
-.permalink a {
-  color: #6b6b6b;
-  text-decoration: none;
-}
-
-.permalink a:hover {
-  color: #6b6b6b;
   text-decoration: underline;
 }
 
