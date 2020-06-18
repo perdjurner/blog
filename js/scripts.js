@@ -49,51 +49,47 @@ function permalink(str) {
   return "/#/" + str.replace(/ /g, "-").toLowerCase();
 }
 
-function postsHtml(posts) {
+function title(post) {
+  const url = permalink(post.title);
+  return window.location.hash
+    ? post.title
+    : `<a href="${url}" onclick="setTimeout(location.reload.bind(location), 1)">${post.title}</a>`;
+}
+
+function author(name) {
+  return `
+    <p class="author">
+      <a href="https://twitter.com/perdjurner">
+        <img src="/images/twitter.svg" alt="Twitter logo">
+        <span>${name}</span>
+      </a>
+    </p>`;
+}
+
+function html(user, posts) {
   let rv = "";
   if (window.location.hash) {
     rv += `<p class="home">&larr; <a href="/">Home</a></p>`;
   }
   for (const post of posts) {
-    const url = permalink(post.title);
-    const title = window.location.hash
-      ? post.title
-      : `<a href="${url}" onclick="setTimeout(location.reload.bind(location), 1)">${post.title}</a>`;
     rv += `
       <article> 
         <div class="date">
           ${toDate(post.closed_at)}
         </div>
         <div class="title">  
-          <h1>${title}</h1>
+          <h1>${title(post)}</h1>
         </div>
-        <div class="labels">
-          ${labelsHtml(post.labels)}
+        <div>
         </div>
         <div class="post">
           ${toHtml(toEntities(post.body))}
+          ${author(user.name)}
         </div>
       </article>
     `;
   }
   return rv;
-}
-
-function labelsHtml(labels) {
-  return labels.reduce((acc, cur, index) => {
-    const li = `<li>${cur.name}</li>`;
-    acc += index === 0 ? `<ul>${li}` : li;
-    return index === labels.length - 1 ? `${acc}</ul>` : acc;
-  }, "");
-}
-
-function footerHtml(user) {
-  return `
-    <a href="https://twitter.com/perdjurner">
-      <img src="/images/twitter.svg" alt="Twitter logo">
-      <p>${user.name}</p>
-    </a>
-  `;
 }
 
 function render(html) {
@@ -115,9 +111,7 @@ function render(html) {
   posts = hash ? posts.filter(onHash) : [...posts].sort(byClosedAt);
 
   // Build and render HTML.
-  render(
-    `<main>${postsHtml(posts)}</main><footer>${footerHtml(user)}</footer>`
-  );
+  render(`<main>${html(user, posts)}</main>`);
 })().catch((e) => {
   console.error(e);
 });
