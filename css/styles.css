@@ -8,6 +8,10 @@ html {
   }
 }
 
+:root {
+  --highlight: rgba(255, 193, 7, 0.5);
+}
+
 html {
   height: 100%;
 }
@@ -77,10 +81,6 @@ article .post {
   line-height: calc(1.3rem * 1.4);
 }
 
-article p strong {
-  font-weight: 500;
-}
-
 code {
   background: #eee;
   padding: 0.2rem 0.4rem;
@@ -140,9 +140,8 @@ article .post .author img {
   text-decoration: underline;
 }
 
-mark {
-  background: none;
-  text-shadow: -6px 0px 12px rgba(255, 193, 7, 0.3),
-    6px 0px 12px rgba(255, 193, 7, 0.3), 12px 0px 24px rgba(255, 193, 7, 0.3),
-    -12px 0px 24px rgba(255, 193, 7, 0.3);
+strong {
+  font-weight: 500;
+  text-shadow: -0.5em 0 1em var(--highlight), 0.5em 0 1em var(--highlight),
+    1em 0 1em var(--highlight), -1em 0 1em var(--highlight);
 }
