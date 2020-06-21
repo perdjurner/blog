@@ -12,10 +12,7 @@ html {
   --highlight: rgba(255, 193, 7, 0.5);
 }
 
-html {
-  height: 100%;
-}
-
+html,
 body {
   background: linear-gradient(
       170deg,
@@ -24,6 +21,9 @@ body {
     ),
     url("/images/bg.png");
   background-attachment: fixed;
+}
+
+body {
   color: #222;
   margin: 0 auto;
   max-width: 850px;
