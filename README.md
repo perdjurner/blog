@@ -1,5 +1,6 @@
 # To Do
 
+- Force refresh when hash doesn't match (this is needed since you might go to a post that was just added and therefore isn't in your local cached copy).
 - Do routing using JS instead of reloading entire page.
 - Implement a search engine.
 - Fade in font when loaded to avoid FOUT.
