@@ -27,7 +27,7 @@ function toHtml(md) {
     "<p>" +
     md
       .replace(/`{3}\r\n([.\s\S]*?)\r\n`{3}/g, "<pre>$1</pre>")
-      .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
+      .replace(/([^a-z])\[(.*?)\]\((.*?)\)/g, "$1<a href='$3'>$2</a>")
       .replace(/`(.*?)`/g, "<code>$1</code>")
       .replace(/\*\*(.*)\*\*/g, "<strong>$1</strong>")
       .replace(/([^a-z])_(.*?)_([^a-z])/gi, "$1<strong>$2</strong>$3")
