@@ -28,12 +28,12 @@
       </tbody>
     </table>
     <script>
-      function highlightRow(event, fn) {
+      function updateRowClass(event, fn) {
         event.target.closest("tr").classList[fn]("highlight");
       }
       document.querySelectorAll(".hoverable").forEach((elm) => {
-        elm.addEventListener("mouseenter", (e) => highlightRow(e, "add"));
-        elm.addEventListener("mouseleave", (e) => highlightRow(e, "remove"));
+        elm.addEventListener("mouseenter", (e) => updateRowClass(e, "add"));
+        elm.addEventListener("mouseleave", (e) => updateRowClass(e, "remove"));
       });
     </script>
   </body>
