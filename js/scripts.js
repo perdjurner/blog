@@ -45,8 +45,16 @@ function toDate(str) {
   }).format(Date.parse(str));
 }
 
+function toSlug(str) {
+  return str
+    .replace(/ \./g, " ")
+    .replace(/ \/ /g, "-")
+    .replace(/ /g, "-")
+    .toLowerCase();
+}
+
 function permalink(str) {
-  return "/#/" + str.replace(/ /g, "-").toLowerCase();
+  return "/#/" + toSlug(str);
 }
 
 function title(post) {
@@ -105,9 +113,11 @@ function render(html) {
   posts = posts.filter((elm) => elm.author_association === "OWNER");
 
   // Get either the post matching the URL hash or sort all posts.
-  const hash = window.location.hash.replace(/[^\-a-z]/g, "");
+  console.log(window.location.hash);
+  const hash = toSlug(window.location.hash).replace(/#\//g, "");
+  console.log(hash);
   const byClosedAt = (a, b) => (a.closed_at < b.closed_at ? 1 : -1);
-  const onHash = (elm) => hash === elm.title.replace(/ /g, "-").toLowerCase();
+  const onHash = (elm) => hash === toSlug(elm.title);
   posts = hash ? posts.filter(onHash) : [...posts].sort(byClosedAt);
 
   // Build and render HTML.
