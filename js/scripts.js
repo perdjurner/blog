@@ -105,6 +105,11 @@ function render(html) {
 }
 
 (async () => {
+  // Fade in the body content when the font has loaded.
+  document.fonts.load("1em Inter").then(() => {
+    document.body.className = "fade";
+  });
+
   // Load user and posts from the GitHub issues API.
   const user = await api("users/perdjurner");
   let posts = await api("repos/perdjurner/blog/issues?state=closed");
@@ -113,9 +118,7 @@ function render(html) {
   posts = posts.filter((elm) => elm.author_association === "OWNER");
 
   // Get either the post matching the URL hash or sort all posts.
-  console.log(window.location.hash);
   const hash = toSlug(window.location.hash).replace(/#\//g, "");
-  console.log(hash);
   const byClosedAt = (a, b) => (a.closed_at < b.closed_at ? 1 : -1);
   const onHash = (elm) => hash === toSlug(elm.title);
   posts = hash ? posts.filter(onHash) : [...posts].sort(byClosedAt);
