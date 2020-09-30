@@ -22,7 +22,6 @@ html {
 }
 
 body {
-  opacity: 0;
   background: linear-gradient(
       170deg,
       rgba(255, 255, 255, 0.4),
@@ -35,7 +34,11 @@ body {
   max-width: 850px;
 }
 
-body.fade {
+main {
+  opacity: 0;
+}
+
+main.loaded {
   animation: fade 1s;
   animation-fill-mode: forwards;
 }

@@ -107,7 +107,7 @@ function render(html) {
 (async () => {
   // Fade in the body content when the font has loaded.
   document.fonts.load("1em Inter").then(() => {
-    document.body.className = "fade";
+    document.querySelector("main").classList.add("loaded");
   });
 
   // Load user and posts from the GitHub issues API.
@@ -124,7 +124,7 @@ function render(html) {
   posts = hash ? posts.filter(onHash) : [...posts].sort(byClosedAt);
 
   // Build and render HTML.
-  render(`<main>${html(user, posts)}</main>`);
+  render(html(user, posts));
 })().catch((e) => {
   console.error(e);
 });
