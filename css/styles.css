@@ -39,7 +39,7 @@ main {
 }
 
 main.loaded {
-  animation: fade 1s;
+  animation: fade 0.5s;
   animation-fill-mode: forwards;
 }
 
