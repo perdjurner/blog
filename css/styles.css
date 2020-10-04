@@ -33,7 +33,7 @@ main {
 }
 
 main.loaded {
-  animation: fade 0.5s;
+  animation: fade 1s;
   animation-fill-mode: forwards;
 }
 
