@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "remix";
 import { api } from "~/utils/github.server";
-import { preparePosts, toSlug } from "~/utils/misc";
+import { prepareUser, preparePosts, toSlug } from "~/utils/misc";
 import PostComponent from "~/components/post";
 
 export const loader = async ({ params }) => {
@@ -8,6 +8,7 @@ export const loader = async ({ params }) => {
     await api("users/perdjurner"),
     await api("repos/perdjurner/blog/issues?state=closed"),
   ]);
+  user = prepareUser(user);
   posts = preparePosts(posts).filter((p) => toSlug(p.title) === params.title);
   return { user, posts };
 };

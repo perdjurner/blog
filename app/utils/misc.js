@@ -26,4 +26,8 @@ const preparePosts = (posts) => {
     .sort((a, b) => (a.closedAt < b.closedAt ? 1 : -1));
 };
 
-export { preparePosts, toDate, toSlug };
+const prepareUser = (user) => {
+  return { name: user.name };
+};
+
+export { prepareUser, preparePosts, toDate, toSlug };
