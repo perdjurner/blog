@@ -164,3 +164,11 @@ article .post .author img {
 .home a:hover {
   text-decoration: underline;
 }
+
+li {
+  margin-bottom: 1em;
+}
+
+li::marker {
+  color: #333;
+}
