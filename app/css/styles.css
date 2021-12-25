@@ -17,13 +17,13 @@ html {
 }
 
 body {
-  background: linear-gradient(
-      170deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(238, 238, 238, 0.4)
-    ),
-    url("/images/bg.png");
-  background-attachment: fixed;
+  background-image: radial-gradient(
+    ellipse farthest-corner at 3px 3px,
+    #eee,
+    #eee 50%,
+    #f6f6f6 50%
+  );
+  background-size: 3px 3px;
   color: #222;
   margin: 0 auto;
   max-width: 850px;
