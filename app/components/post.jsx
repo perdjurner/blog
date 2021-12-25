@@ -10,7 +10,9 @@ export default function PostComponent({ post, author }) {
       <div className="title">
         <h1>
           {pathname === "/" ? (
-            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+            <Link prefetch="intent" to={`/blog/${post.slug}`}>
+              {post.title}
+            </Link>
           ) : (
             post.title
           )}
