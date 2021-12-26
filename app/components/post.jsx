@@ -2,11 +2,15 @@ import { Link, useLocation } from "remix";
 import ReactMarkdown from "react-markdown";
 import { toDate } from "~/utils/misc";
 
-export default function PostComponent({ post, author }) {
+export default function PostComponent({ post, user }) {
   const { pathname } = useLocation();
   return (
     <article>
-      <div className="date">{toDate(post.closedAt)}</div>
+      <div className="date">
+        {toDate(post.closedAt)}
+        <br />
+        <a href={user.url}>{user.name}</a>
+      </div>
       <div className="title">
         <h1>
           {pathname === "/" ? (
@@ -21,12 +25,11 @@ export default function PostComponent({ post, author }) {
       <div />
       <div className="post">
         <ReactMarkdown>{post.body}</ReactMarkdown>
-        <p className="author">
-          <a href="https://twitter.com/perdjurner">
-            <img src="/images/twitter.svg" alt="Twitter logo" />
-            <span>{author}</span>
-          </a>
-        </p>
+        {pathname !== "/" ? (
+          <p className="back">
+            <Link to="/">Home</Link>
+          </p>
+        ) : null}
       </div>
     </article>
   );

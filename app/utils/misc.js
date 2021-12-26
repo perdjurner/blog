@@ -27,7 +27,7 @@ const preparePosts = (posts) => {
 };
 
 const prepareUser = (user) => {
-  return { name: user.name };
+  return { name: user.name, url: user.html_url };
 };
 
 export { prepareUser, preparePosts, toDate, toSlug };

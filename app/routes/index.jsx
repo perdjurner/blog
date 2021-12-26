@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <>
       {posts.map((p) => (
-        <PostComponent key={p.id} post={p} author={user.name}></PostComponent>
+        <PostComponent key={p.id} post={p} user={user}></PostComponent>
       ))}
     </>
   );

@@ -18,10 +18,7 @@ export default function Post() {
   const p = posts[0];
   return (
     <>
-      <p className="home">
-        &larr; <Link to="/">Home</Link>
-      </p>
-      <PostComponent key={p.id} post={p} author={user.name}></PostComponent>
+      <PostComponent key={p.id} post={p} user={user}></PostComponent>
     </>
   );
 }

@@ -26,7 +26,7 @@ body {
   background-size: 3px 3px;
   color: #222;
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 53rem;
 }
 
 *::selection {
@@ -42,56 +42,24 @@ main.loaded {
   animation-fill-mode: forwards;
 }
 
-article {
-  margin-top: 4rem;
-  margin-bottom: 8rem;
-  display: grid;
-  grid-template-columns: 10rem auto;
-}
-
-article .title a {
-  color: #222;
-  text-decoration: none;
-}
-
-article .title a:hover {
-  text-decoration: underline;
-}
-
-article .post a {
+a {
   color: #174ba2;
   text-decoration: underline;
 }
 
-article .post a:hover {
+a:hover {
   color: #042470;
   text-decoration: none;
 }
 
-article .date {
-  align-self: end;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #6b6b6b;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: calc(1rem + 3px);
+h1 a {
+  color: #222;
+  text-decoration: none;
 }
 
-article .title {
-  padding: 1rem 0;
-  align-self: end;
-  border-bottom: 2px solid #ddd;
-}
-
-article .title h1 {
-  font-size: 2.4rem;
-  line-height: calc(2.4rem * 1.1);
-  margin: 0;
-}
-
-article .post {
-  font-size: 1.3rem;
-  line-height: calc(1.3rem * 1.4);
+h1 a:hover {
+  color: #222;
+  text-decoration: underline;
 }
 
 strong,
@@ -124,46 +92,10 @@ pre {
   overflow-wrap: break-word;
 }
 
-article .post .author {
+.back {
+  margin-top: 4rem;
   padding-top: 0.5rem;
   border-top: 1px solid #ddd;
-  display: flex;
-}
-
-article .post .author a {
-  align-items: center;
-  color: #6b6b6b;
-  display: flex;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-article .post .author a:hover {
-  text-decoration: underline;
-}
-
-article .post .author img {
-  margin-right: 5px;
-  height: 16px;
-  width: 16px;
-}
-
-.home {
-  position: absolute;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #6b6b6b;
-  top: 0;
-}
-
-.home a {
-  color: #6b6b6b;
-  text-decoration: none;
-}
-
-.home a:hover {
-  text-decoration: underline;
 }
 
 li {
@@ -172,4 +104,38 @@ li {
 
 li::marker {
   color: #333;
+}
+
+article {
+  margin-top: 4rem;
+  margin-bottom: 8rem;
+  display: grid;
+  grid-template-columns: 10rem auto;
+}
+
+article .date {
+  align-self: end;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b6b6b;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: calc(1rem + 3px);
+  line-height: calc(0.75rem * 1.5);
+}
+
+article .title {
+  padding: 1rem 0;
+  align-self: end;
+  border-bottom: 2px solid #ddd;
+}
+
+article .title h1 {
+  font-size: 2.4rem;
+  line-height: calc(2.4rem * 1.1);
+  margin: 0;
+}
+
+article .post {
+  font-size: 1.3rem;
+  line-height: calc(1.3rem * 1.4);
 }
