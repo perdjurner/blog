@@ -17,6 +17,6 @@ article .post {
 }
 
 pre {
-  font-size: 1.1rem;
-  line-height: calc(1.1rem * 1.2);
+  font-size: 0.95rem;
+  line-height: calc(0.95rem * 1.2);
 }
