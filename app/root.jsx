@@ -34,7 +34,6 @@ export const links = () => {
 
 export const meta = () => {
   return {
-    charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1.0",
     description: "Dev blog",
     title: "Per Djurner",
@@ -45,6 +44,7 @@ export default function App() {
   return (
     <html lang="en">
       <head>
+        <meta charset="utf-8" />
         <Meta />
         <Links />
       </head>
