@@ -17,6 +17,8 @@ export const links = () => {
   return [
     {
       rel: "stylesheet",
+      media: "print",
+      onload: "this.onload=null;this.removeAttribute('media');",
       href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
     },
     {
