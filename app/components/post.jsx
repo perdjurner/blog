@@ -9,7 +9,7 @@ export default function PostComponent({ post, user }) {
       <div className="date">
         {toDate(post.closedAt)}
         <br />
-        <a href={user.url}>{user.name}</a>
+        <a href="https://twitter.com/perdjurner">{user.name}</a>
       </div>
       <div className="title">
         <h1>
