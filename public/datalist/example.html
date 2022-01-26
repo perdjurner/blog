@@ -44,16 +44,12 @@
   <div id="app">
     <input list="options" placeholder="Options..." v-model="inputValue" @focus="focus" @change="change" />
     <datalist id="options">
-      <option value="Dog">Dog</option>
-      <option value="Cat">Cat</option>
-      <option value="Goldfish">Goldfish</option>
+      <option v-for="option in options" :value="option">{{ option }}</option>
     </datalist>
     <hr>
     <select v-model="selectValue">
       <option value="">Options...</option>
-      <option value="Dog">Dog</option>
-      <option value="Cat">Cat</option>
-      <option value="Goldfish">Goldfish</option>
+      <option v-for="option in options" :value="option">{{ option }}</option>
     </select>
     <hr>
     <p>Input value is: {{ inputValue }}</p>
@@ -63,6 +59,7 @@
     var app = new Vue({
       el: "#app",
       data: {
+        options: ["Dog", "Cat", "Goldfish"],
         inputValue: "",
         selectValue: ""
       },
