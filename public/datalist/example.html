@@ -70,7 +70,7 @@
       methods: {
         focus() {
           this.inputValueBeforeClearing = this.inputValue;
-          this.currentPlaceholder = this.inputValue ?? this.initialPlaceholder;
+          this.currentPlaceholder = this.inputValue ? this.inputValue : this.initialPlaceholder;
           this.inputValue = "";
         },
         blur() {
