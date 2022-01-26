@@ -42,13 +42,14 @@
 
 <body>
   <div id="app">
-    <input list="options" placeholder="Options..." v-model="inputValue" @focus="focus" @change="change" />
-    <datalist id="options">
+    <input list="pets" :placeholder="currentPlaceholder" v-model="inputValue" @focus="focus" @blur="blur"
+      @change="change" />
+    <datalist id="pets">
       <option v-for="option in options" :value="option">{{ option }}</option>
     </datalist>
     <hr>
     <select v-model="selectValue">
-      <option value="">Options...</option>
+      <option value="">{{ initialPlaceholder }}</option>
       <option v-for="option in options" :value="option">{{ option }}</option>
     </select>
     <hr>
@@ -61,11 +62,21 @@
       data: {
         options: ["Dog", "Cat", "Goldfish"],
         inputValue: "",
-        selectValue: ""
+        inputValueBeforeClearing: "",
+        selectValue: "",
+        initialPlaceholder: "Options...",
+        currentPlaceholder: "Options..."
       },
       methods: {
         focus() {
+          this.inputValueBeforeClearing = this.inputValue;
+          this.currentPlaceholder = this.inputValue ?? this.initialPlaceholder;
           this.inputValue = "";
+        },
+        blur() {
+          if (this.inputValue === "") {
+            this.inputValue = this.inputValueBeforeClearing;
+          }
         },
         change(event) {
           event.target.blur()
