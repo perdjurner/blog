@@ -34,7 +34,7 @@
       display: none !important;
     }
 
-    ::placeholder {
+    input[list]::placeholder {
       color: #000;
     }
   </style>
@@ -42,12 +42,11 @@
 
 <body>
   <div id="app">
-    <input list="options" placeholder="Options..." v-model="inputValue" onfocus="this.value=''"
-      onchange="this.blur()" />
+    <input list="options" placeholder="Options..." v-model="inputValue" @focus="focus" @change="change" />
     <datalist id="options">
-      <option value="Dog">
-      <option value="Cat">
-      <option value="Goldfish">
+      <option value="Dog">Dog</option>
+      <option value="Cat">Cat</option>
+      <option value="Goldfish">Goldfish</option>
     </datalist>
     <hr>
     <select v-model="selectValue">
@@ -68,21 +67,11 @@
         selectValue: ""
       },
       methods: {
-        handle(event) {
-          if (event.type === "click") {
-            if (event.isTrusted) {
-              window.setTimeout(() => {
-                console.log("clear");
-                this.inputValue = " ";
-                window.setTimeout(() => {
-                  console.log("click");
-                  // event.target.click();
-                }, 10);
-              }, 10);
-            } else {
-              console.log("not trusted");
-            }
-          }
+        focus() {
+          this.inputValue = "";
+        },
+        change(event) {
+          event.target.blur()
         },
       },
     });
