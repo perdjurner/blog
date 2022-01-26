@@ -44,6 +44,10 @@
       background: none;
       cursor: text;
     }
+
+    p {
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 
@@ -55,8 +59,13 @@
       <datalist id="units">
         <option v-for="option in options" :value="option">{{ option }}</option>
       </datalist>
-      <button @click="clear" v-if="inputValue">&#10006;</button>
+      <button @click="clear" v-if="inputValue || currentPlaceholder != initialPlaceholder">&#10006;</button>
     </div>
+    <hr>
+    <p>inputValue:<br>{{ inputValue }}</p>
+    <p>inputValueBeforeClearing:<br>{{ inputValueBeforeClearing }}</p>
+    <p>initialPlaceholder:<br>{{ initialPlaceholder }}</p>
+    <p>currentPlaceholder:<br>{{ currentPlaceholder }}</p>
   </div>
   <script>
     var app = new Vue({
@@ -65,7 +74,6 @@
         options: ["Bananen", "Citronen", "Grapefrukten", "Melonen", "Passionsfrukten"],
         inputValue: "",
         inputValueBeforeClearing: "",
-        selectValue: "",
         initialPlaceholder: "Välj...",
         currentPlaceholder: "Välj..."
       },
@@ -90,6 +98,7 @@
         },
         clear() {
           this.inputValue = "";
+          this.currentPlaceholder = this.initialPlaceholder;
         },
       },
     });
