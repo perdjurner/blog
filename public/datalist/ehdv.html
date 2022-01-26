@@ -95,7 +95,7 @@
             const foundValue = this.options.find(x => {
               return x.toLowerCase() === this.inputValue.toLowerCase();
             });
-            this.inputValue = foundValue || "";
+            this.inputValue = foundValue || this.inputValueBeforeClearing || "";
           }
         },
         change(event) {
