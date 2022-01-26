@@ -69,13 +69,18 @@
       },
       methods: {
         focus() {
+          this.currentPlaceholder = this.inputValue || this.initialPlaceholder;
           this.inputValueBeforeClearing = this.inputValue;
-          this.currentPlaceholder = this.inputValue ? this.inputValue : this.initialPlaceholder;
           this.inputValue = "";
         },
         blur() {
           if (this.inputValue === "") {
             this.inputValue = this.inputValueBeforeClearing;
+          } else {
+            const foundValue = this.options.find(x => {
+              return x.toLowerCase() === this.inputValue.toLowerCase();
+            });
+            this.inputValue = foundValue || "";
           }
         },
         change(event) {
