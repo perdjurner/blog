@@ -12,7 +12,7 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      padding: 4px 24px 4px 4px;
+      padding: 4px 40px 4px 4px;
       background-image: url("data:image/svg+xml;utf8,<svg fill='%23808285' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
       background-repeat: no-repeat;
       background-position-x: right;
@@ -29,16 +29,34 @@
     input[list]::placeholder {
       color: #999;
     }
+
+    .wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    button {
+      position: absolute;
+      right: 18px;
+      top: 2px;
+      color: #808285;
+      border: none;
+      background: none;
+      cursor: text;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <input list="units" :placeholder="currentPlaceholder" v-model="inputValue" @focus="focus" @blur="blur"
-      @change="change" />
-    <datalist id="units">
-      <option v-for="option in options" :value="option">{{ option }}</option>
-    </datalist>
+    <div class="wrapper">
+      <input list="units" :placeholder="currentPlaceholder" v-model="inputValue" @focus="focus" @blur="blur"
+        @change="change" />
+      <datalist id="units">
+        <option v-for="option in options" :value="option">{{ option }}</option>
+      </datalist>
+      <button @click="clear" v-if="inputValue">&#10006;</button>
+    </div>
   </div>
   <script>
     var app = new Vue({
@@ -69,6 +87,9 @@
         },
         change(event) {
           event.target.blur()
+        },
+        clear() {
+          this.inputValue = "";
         },
       },
     });
