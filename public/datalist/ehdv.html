@@ -59,8 +59,8 @@
 <body>
   <div id="app">
     <div class="wrapper">
-      <input list="units" :placeholder="currentPlaceholder" v-model="inputValue" @focus="focus" @blur="blur"
-        @change="change" />
+      <input list="units" :placeholder="currentPlaceholder" autocomplete="off" v-model="inputValue" @focus="focus"
+        @blur="blur" @change="change" />
       <datalist id="units">
         <option v-for="option in options" :value="option">{{ option }}</option>
       </datalist>
