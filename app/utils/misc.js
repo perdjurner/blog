@@ -1,11 +1,11 @@
-const toDate = (str) =>
+export const toDate = (str) =>
   new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   }).format(Date.parse(str));
 
-const toSlug = (str) =>
+export const toSlug = (str) =>
   str
     .replace(/ \./g, " ")
     .replace(/ \/ /g, "-")
@@ -13,7 +13,7 @@ const toSlug = (str) =>
     .replace(/#/g, "")
     .toLowerCase();
 
-const preparePosts = (posts) => {
+export const preparePosts = (posts) => {
   return posts
     .filter((p) => p.author_association === "OWNER")
     .map((p) => ({
@@ -26,8 +26,6 @@ const preparePosts = (posts) => {
     .sort((a, b) => (a.closedAt < b.closedAt ? 1 : -1));
 };
 
-const prepareUser = (user) => {
+export const prepareUser = (user) => {
   return { name: user.name, url: user.html_url };
 };
-
-export { prepareUser, preparePosts, toDate, toSlug };
