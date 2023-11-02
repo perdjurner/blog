@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datalist vs Select</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    select,
+    input[list] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding: 4px 24px 4px 4px;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23808285' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: 50%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    select {
+      width: 230px;
+    }
+
+    input[list] {
+      width: 200px;
+    }
+
+    input[list]::-webkit-calendar-picker-indicator {
+      display: none !important;
+    }
+
+    input[list]::placeholder {
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input list="pets" :placeholder="currentPlaceholder" v-model="inputValue" @focus="focus" @blur="blur"
+      @change="change" />
+    <datalist id="pets">
+      <option v-for="option in options" :value="option">{{ option }}</option>
+    </datalist>
+    <hr>
+    <select v-model="selectValue">
+      <option value="">{{ initialPlaceholder }}</option>
+      <option v-for="option in options" :value="option">{{ option }}</option>
+    </select>
+    <hr>
+    <p>Input value is: {{ inputValue }}</p>
+    <p>Select value is: {{ selectValue }}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        options: ["Dog", "Cat", "Goldfish"],
+        inputValue: "",
+        inputValueBeforeClearing: "",
+        selectValue: "",
+        initialPlaceholder: "Options...",
+        currentPlaceholder: "Options..."
+      },
+      methods: {
+        focus() {
+          this.currentPlaceholder = this.inputValue || this.initialPlaceholder;
+          this.inputValueBeforeClearing = this.inputValue;
+          this.inputValue = "";
+        },
+        blur() {
+          if (this.inputValue === "") {
+            this.inputValue = this.inputValueBeforeClearing;
+          } else {
+            const foundValue = this.options.find(x => {
+              return x.toLowerCase() === this.inputValue.toLowerCase();
+            });
+            this.inputValue = foundValue || "";
+          }
+        },
+        change(event) {
+          event.target.blur()
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

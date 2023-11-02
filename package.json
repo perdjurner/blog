@@ -1,32 +1,30 @@
 {
-  "name": "new-netlify-app",
   "private": true,
-  "sideEffects": false,
-  "type": "module",
+  "name": "blog",
+  "description": "",
+  "license": "",
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "netlify serve",
-    "typecheck": "tsc -b"
+    "postinstall": "remix setup node",
+    "start": "remix-serve build"
   },
   "dependencies": {
-    "@netlify/remix-adapter": "^2.2.0",
-    "@remix-run/node": "^2.2.0",
-    "@remix-run/react": "^2.2.0",
-    "cross-env": "^7.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@netlify/functions": "0.10.0",
+    "@remix-run/netlify": "1.1.1",
+    "@remix-run/react": "1.1.1",
+    "@remix-run/serve": "1.1.1",
+    "node-cache": "5.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-markdown": "6.0.3",
+    "remix": "1.1.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.2.0",
-    "@remix-run/eslint-config": "^2.2.0",
-    "@remix-run/serve": "^2.2.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "eslint": "^8.27.0",
-    "typescript": "^5.2.2"
+    "@remix-run/dev": "1.1.1"
   },
   "engines": {
-    "node": ">=18"
-  }
+    "node": ">=16"
+  },
+  "sideEffects": false
 }

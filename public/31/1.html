@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Example" />
+    <title>Example</title>
+    <style>
+      .highlight {
+        background: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td class="hoverable">Data 2</td>
+          <td>Data 3</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      function updateRowClass(event, fn) {
+        event.target.closest("tr").classList[fn]("highlight");
+      }
+      document.querySelectorAll(".hoverable").forEach((elm) => {
+        elm.addEventListener("mouseenter", (e) => updateRowClass(e, "add"));
+        elm.addEventListener("mouseleave", (e) => updateRowClass(e, "remove"));
+      });
+    </script>
+  </body>
+</html>
